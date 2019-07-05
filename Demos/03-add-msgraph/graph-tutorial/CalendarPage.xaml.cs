@@ -1,4 +1,7 @@
-﻿using Microsoft.Toolkit.Services.MicrosoftGraph;
+﻿// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT license.
+
+using Microsoft.Toolkit.Services.MicrosoftGraph;
 using Microsoft.Toolkit.Uwp.UI.Controls;
 using Newtonsoft.Json;
 using System;
@@ -56,7 +59,7 @@ namespace graph_tutorial
 
                 EventList.ItemsSource = events.CurrentPage.ToList();
             }
-            catch(Microsoft.Graph.ServiceException ex)
+            catch (Microsoft.Graph.ServiceException ex)
             {
                 ShowNotification($"Exception getting events: {ex.Message}");
             }

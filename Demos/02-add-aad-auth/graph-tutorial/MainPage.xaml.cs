@@ -1,4 +1,7 @@
-﻿using Microsoft.Toolkit.Services.MicrosoftGraph;
+﻿// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT license.
+
+using Microsoft.Toolkit.Services.MicrosoftGraph;
 using System;
 using System.Collections.Generic;
 using System.IO;

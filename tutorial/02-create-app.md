@@ -1,12 +1,12 @@
 <!-- markdownlint-disable MD002 MD041 -->
 
-Open Visual Studio, and select **File > New > Project**. In the **New Project** dialog, do the following:
+Open Visual Studio, and select **Create a new project**. Choose the **Blank App (Universal Windows)** option that uses C#, then select **Next**.
 
-1. Select **Templates > Visual C# > Windows Universal**.
-1. Select **Blank App (Universal Windows)**.
-1. Enter **graph-tutorial** for the Name of the project.
+![Visual Studio 2019 create new project dialog](./images/vs-create-new-project.png)
 
-![Visual Studio 2017 create new project dialog](./images/vs-newproj-01.png)
+In the **Configure your new project** dialog, enter `graph-tutorial` in the **Project name** field and select **Create**.
+
+![Visual Studio 2019 configure new project dialog](./images/vs-configure-new-project.png)
 
 > [!IMPORTANT]
 > Ensure that you enter the exact same name for the Visual Studio Project that is specified in these lab instructions. The Visual Studio Project name becomes part of the namespace in the code. The code inside these instructions depends on the namespace matching the Visual Studio Project name specified in these instructions. If you use a different project name the code will not compile unless you adjust all the namespaces to match the Visual Studio Project name you enter when you create the project.
@@ -23,10 +23,10 @@ Before moving on, install some additional NuGet packages that you will use later
 Select **Tools > NuGet Package Manager > Package Manager Console**. In the Package Manager Console, enter the following commands.
 
 ```Powershell
-Install-Package Microsoft.Toolkit.Uwp.Ui.Controls
-Install-Package Microsoft.Toolkit.Uwp.Ui.Controls.DataGrid
-Install-Package Microsoft.Toolkit.Uwp.Ui.Controls.Graph
-Install-Package Microsoft.Graph
+Install-Package Microsoft.Toolkit.Uwp.Ui.Controls -Version 5.1.1
+Install-Package Microsoft.Toolkit.Uwp.Ui.Controls.DataGrid -Version 5.1.0
+Install-Package Microsoft.Toolkit.Uwp.Ui.Controls.Graph -Version 5.1.0
+Install-Package Microsoft.Graph -Version 1.16.0
 ```
 
 ## Design the app
@@ -98,19 +98,7 @@ Now add another XAML page for the Home view. Right-click the **graph-tutorial** 
 </StackPanel>
 ```
 
-Now expand **MainPage.xaml** in Solution Explorer and open `MainPage.xaml.cs`. Add the following code to the `MainPage()` constructor **after** the `this.InitializeComponent();` line.
-
-```cs
-// Initialize auth state to false
-SetAuthState(false);
-
-// Navigate to HomePage.xaml
-RootFrame.Navigate(typeof(HomePage));
-```
-
-When the app first starts, it will initialize the authentication state to `false` and navigate to the home page.
-
-Add the following function to the `MainPage` class to manage authentication state.
+Now expand **MainPage.xaml** in Solution Explorer and open `MainPage.xaml.cs`. Add the following function to the `MainPage` class to manage authentication state.
 
 ```cs
 private void SetAuthState(bool isAuthenticated)
@@ -121,6 +109,18 @@ private void SetAuthState(bool isAuthenticated)
     Calendar.IsEnabled = isAuthenticated;
 }
 ```
+
+Add the following code to the `MainPage()` constructor **after** the `this.InitializeComponent();` line.
+
+```cs
+// Initialize auth state to false
+SetAuthState(false);
+
+// Navigate to HomePage.xaml
+RootFrame.Navigate(typeof(HomePage));
+```
+
+When the app first starts, it will initialize the authentication state to `false` and navigate to the home page.
 
 Add the following event handler to load the requested page when the user selects an item from the navigation view.
 

@@ -7,11 +7,11 @@
   IgnorableNamespaces="uap mp">
 
   <Identity
-    Name="286b2663-e06c-4030-8dbd-16fdf46cf8a4"
+    Name="84fadc6a-31c0-4d8f-8a29-4bef6f666cfb"
     Publisher="CN=jasonjoh"
     Version="1.0.0.0" />
 
-  <mp:PhoneIdentity PhoneProductId="286b2663-e06c-4030-8dbd-16fdf46cf8a4" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
+  <mp:PhoneIdentity PhoneProductId="84fadc6a-31c0-4d8f-8a29-4bef6f666cfb" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
     <DisplayName>graph-tutorial</DisplayName>

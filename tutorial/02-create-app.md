@@ -23,10 +23,10 @@ Before moving on, install some additional NuGet packages that you will use later
 Select **Tools > NuGet Package Manager > Package Manager Console**. In the Package Manager Console, enter the following commands.
 
 ```Powershell
-Install-Package Microsoft.Toolkit.Uwp.Ui.Controls -Version 5.1.1
-Install-Package Microsoft.Toolkit.Uwp.Ui.Controls.DataGrid -Version 5.1.0
-Install-Package Microsoft.Toolkit.Uwp.Ui.Controls.Graph -Version 5.1.0
-Install-Package Microsoft.Graph -Version 1.16.0
+Install-Package Microsoft.Toolkit.Uwp.Ui.Controls -Version 6.0.0
+Install-Package Microsoft.Toolkit.Uwp.Ui.Controls.DataGrid -Version 6.0.0
+Install-Package Microsoft.Toolkit.Uwp.Ui.Controls.Graph -Version 6.0.0
+Install-Package Microsoft.Graph -Version 1.20.0
 ```
 
 ## Design the app

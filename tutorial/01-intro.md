@@ -10,7 +10,7 @@ This tutorial teaches you how to build a Universal Windows Platform (UWP) app th
 Before you start this tutorial, you should have [Visual Studio](https://visualstudio.microsoft.com/vs/) installed on a computer running Windows 10 with [Developer mode turned on](https://docs.microsoft.com/windows/uwp/get-started/enable-your-device-for-development). If you do not have Visual Studio, visit the previous link for download options.
 
 > [!NOTE]
-> This tutorial was written with Visual Studio 2019 version 16.1.5. The steps in this guide may work with other versions, but that has not been tested.
+> This tutorial was written with Visual Studio 2019 version 16.4.0. The steps in this guide may work with other versions, but that has not been tested.
 
 ## Watch the tutorial
 

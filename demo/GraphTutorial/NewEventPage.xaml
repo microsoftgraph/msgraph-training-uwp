@@ -1,0 +1,40 @@
+﻿<!-- Copyright (c) Microsoft Corporation.
+     Licensed under the MIT License. -->
+    
+<!-- <NewEventPageXamlSnippet> -->
+<Page xmlns:wgt="using:Microsoft.Toolkit.Graph.Controls" 
+    x:Class="GraphTutorial.NewEventPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:GraphTutorial"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <StackPanel Margin="10" Spacing="10">
+        <TextBox Header="Subject" Text="{Binding Subject, Mode=TwoWay}" />
+        <TextBlock Text="Attendees"/>
+        <wgt:PeoplePicker Name="AttendeePicker" />
+        <Grid ColumnSpacing="10" RowSpacing="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="auto" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+            <DatePicker Header="Start Date" Date="{Binding StartDate, Mode=TwoWay}" />
+            <TimePicker Header="Start Time" Time="{Binding StartTime, Mode=TwoWay}" Grid.Column="2" />
+            <DatePicker Header="End Date" Date="{Binding EndDate, Mode=TwoWay}" Grid.Row="2" />
+            <TimePicker Header="End Time" Time="{Binding EndTime, Mode=TwoWay}" Grid.Row="2" Grid.Column="2" />
+        </Grid>
+        <TextBox Header="Body" Text="{Binding Body, Mode=TwoWay}" 
+                 AcceptsReturn="True" TextWrapping="Wrap" 
+                 Height="200" ScrollViewer.VerticalScrollBarVisibility="Auto" />
+        <Button Content="Create" Click="CreateEvent" IsEnabled="{Binding IsValid}"/>
+        <ProgressRing Name="CreateProgress" Visibility="Collapsed" IsActive="False" />
+    </StackPanel>
+</Page>
+<!-- </NewEventPageXamlSnippet> -->

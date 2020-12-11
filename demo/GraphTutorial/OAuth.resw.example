@@ -121,6 +121,6 @@
     <value>YOUR_APP_ID_HERE</value>
   </data>
   <data name="Scopes" xml:space="preserve">
-    <value>User.Read User.ReadBasic.All Calendars.Read</value>
+    <value>User.Read User.ReadBasic.All MailboxSettings.Read Calendars.ReadWrite</value>
   </data>
 </root>

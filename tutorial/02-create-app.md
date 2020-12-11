@@ -19,15 +19,13 @@ In this section you'll create a new UWP app.
 
 Before moving on, install some additional NuGet packages that you will use later.
 
-- [Microsoft.Toolkit.Uwp.Ui.Controls](https://www.nuget.org/packages/Microsoft.Toolkit.Uwp.Ui.Controls/) to add some UI controls for in-app notifications and loading indicators.
 - [Microsoft.Toolkit.Uwp.Ui.Controls.DataGrid](https://www.nuget.org/packages/Microsoft.Toolkit.Uwp.Ui.Controls.DataGrid/) to display the information returned by Microsoft Graph.
 - [Microsoft.Toolkit.Graph.Controls](https://www.nuget.org/packages/Microsoft.Toolkit.Graph.Controls) to handle login and access token retrieval.
 
 1. Select **Tools > NuGet Package Manager > Package Manager Console**. In the Package Manager Console, enter the following commands.
 
     ```powershell
-    Install-Package Microsoft.Toolkit.Uwp.Ui.Controls -Version 6.0.0
-    Install-Package Microsoft.Toolkit.Uwp.Ui.Controls.DataGrid -Version 6.0.0
+    Install-Package Microsoft.Toolkit.Uwp.Ui.Controls.DataGrid -IncludePrerelease
     Install-Package Microsoft.Toolkit.Graph.Controls -IncludePrerelease
     ```
 
@@ -45,7 +43,7 @@ In this section you'll create the UI for the app.
 
     :::code language="xaml" source="../demo/GraphTutorial/MainPage.xaml" id="MainPageXamlSnippet":::
 
-    This defines a basic [NavigationView](/uwp/api/windows.ui.xaml.controls.navigationview) with **Home** and **Calendar** navigation links to act as the main view of the app. It also adds a [LoginButton](https://github.com/windows-toolkit/Graph-Controls) control in the header of the view. That control will allow the user to sign in and out. The control isn't fully enabled yet, you will configure it in a later exercise.
+    This defines a basic [NavigationView](/uwp/api/windows.ui.xaml.controls.navigationview) with **Home**, **Calendar**, and **New event** navigation links to act as the main view of the app. It also adds a [LoginButton](https://github.com/windows-toolkit/Graph-Controls) control in the header of the view. That control will allow the user to sign in and out. The control isn't fully enabled yet, you will configure it in a later exercise.
 
 1. Right-click the **graph-tutorial** project in Solution Explorer and select **Add > New Item...**. Choose **Blank Page**, enter `HomePage.xaml` in the **Name** field, and select **Add**. Replace the existing `<Grid>` element in the file with the following.
 
@@ -80,6 +78,9 @@ In this section you'll create the UI for the app.
 
         switch (invokedItem.ToLower())
         {
+            case "new event":
+                throw new NotImplementedException();
+                break;
             case "calendar":
                 throw new NotImplementedException();
                 break;

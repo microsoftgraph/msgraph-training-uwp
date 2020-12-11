@@ -1,6 +1,7 @@
 ﻿// Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
+using Microsoft.Graph;
 using Microsoft.Toolkit.Graph.Providers;
 using Microsoft.Toolkit.Uwp.UI.Controls;
 using Newtonsoft.Json;
@@ -51,20 +52,57 @@ namespace GraphTutorial
 
             try
             {
+                // Get the user's mailbox settings to determine
+                // their time zone
+                var user = await graphClient.Me.Request()
+                    .Select(u => new { u.MailboxSettings })
+                    .GetAsync();
+
+                var startOfWeek = GetUtcStartOfWeekInTimeZone(DateTime.Today, user.MailboxSettings.TimeZone);
+                var endOfWeek = startOfWeek.AddDays(7);
+
+                var queryOptions = new List<QueryOption>
+                {
+                    new QueryOption("startDateTime", startOfWeek.ToString("o")),
+                    new QueryOption("endDateTime", endOfWeek.ToString("o"))
+                };
+
                 // Get the events
-                var events = await graphClient.Me.Events.Request()
-                    .Select("subject,organizer,start,end")
-                    .OrderBy("createdDateTime DESC")
+                var events = await graphClient.Me.CalendarView.Request(queryOptions)
+                    .Header("Prefer", $"outlook.timezone=\"{user.MailboxSettings.TimeZone}\"")
+                    .Select(ev => new
+                    {
+                        ev.Subject,
+                        ev.Organizer,
+                        ev.Start,
+                        ev.End
+                    })
+                    .OrderBy("start/dateTime")
+                    .Top(50)
                     .GetAsync();
 
                 EventList.ItemsSource = events.CurrentPage.ToList();
             }
-            catch (Microsoft.Graph.ServiceException ex)
+            catch (ServiceException ex)
             {
                 ShowNotification($"Exception getting events: {ex.Message}");
             }
 
             base.OnNavigatedTo(e);
+        }
+
+        private static DateTime GetUtcStartOfWeekInTimeZone(DateTime today, string timeZoneId)
+        {
+            TimeZoneInfo userTimeZone = TimeZoneInfo.FindSystemTimeZoneById(timeZoneId);
+
+            // Assumes Sunday as first day of week
+            int diff = System.DayOfWeek.Sunday - today.DayOfWeek;
+
+            // create date as unspecified kind
+            var unspecifiedStart = DateTime.SpecifyKind(today.AddDays(diff), DateTimeKind.Unspecified);
+
+            // convert to UTC
+            return TimeZoneInfo.ConvertTimeToUtc(unspecifiedStart, userTimeZone);
         }
     }
 }

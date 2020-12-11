@@ -71,6 +71,7 @@ namespace GraphTutorial
 
             // Toggle controls that require auth
             Calendar.IsEnabled = isAuthenticated;
+            NewEvent.IsEnabled = isAuthenticated;
         }
         // </SetAuthStateSnippet>
 
@@ -81,6 +82,9 @@ namespace GraphTutorial
             // <SwitchStatementSnippet>
             switch (invokedItem.ToLower())
             {
+                case "new event":
+                    RootFrame.Navigate(typeof(NewEventPage));
+                    break;
                 case "calendar":
                     RootFrame.Navigate(typeof(CalendarPage));
                     break;

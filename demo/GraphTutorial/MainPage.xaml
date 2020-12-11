@@ -34,12 +34,17 @@
             <NavigationView.MenuItems>
                 <NavigationViewItem Content="Home" x:Name="Home" Tag="home">
                     <NavigationViewItem.Icon>
-                        <FontIcon Glyph="&#xE10F;"/>
+                        <FontIcon Glyph="&#xE80F;"/>
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
                 <NavigationViewItem Content="Calendar" x:Name="Calendar" Tag="calendar">
                     <NavigationViewItem.Icon>
-                        <FontIcon Glyph="&#xE163;"/>
+                        <FontIcon Glyph="&#xE787;"/>
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+                <NavigationViewItem Content="New event" x:Name="NewEvent" Tag="newevent">
+                    <NavigationViewItem.Icon>
+                        <FontIcon Glyph="&#xE710;"/>
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
             </NavigationView.MenuItems>

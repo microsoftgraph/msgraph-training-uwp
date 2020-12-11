@@ -5,7 +5,7 @@ In this exercise you will extend the application from the previous exercise to s
 1. Right-click the **GraphTutorial** project in Solution Explorer and select **Add > New Item...**. Choose **Resources File (.resw)**, name the file `OAuth.resw` and select **Add**. When the new file opens in Visual Studio, create two resources as follows.
 
     - **Name:** `AppId`, **Value:** the app ID you generated in Application Registration Portal
-    - **Name:** `Scopes`, **Value:** `User.Read Calendars.Read`
+    - **Name:** `Scopes`, **Value:** `User.Read User.ReadBasic.All People.Read MailboxSettings.Read Calendars.ReadWrite`
 
     ![A screenshot of the OAuth.resw file in the Visual Studio editor](./images/edit-resources-01.png)
 
